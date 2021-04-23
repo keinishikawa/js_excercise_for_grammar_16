@@ -11,9 +11,44 @@
 //   - MDN : fetch
 //     - https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/fetch
 
+const fetch = require("node-fetch")
+
+class QuizFetcher{
+    constructor(){
+
+    }
+
+    fetchMultipleQuizData(){
+        fetch("https://opentdb.com/api.php?amount=4&type=multiple")
+            .then((response) =>{
+                // console.log(response);
+                return response.json();
+            })
+
+            .then((data)=>{
+                console.log(data);
+            })
+    }
+
+    fetchTrueOrFalseQuizData(){
+        fetch("https://opentdb.com/api.php?amount=2&type=boolean")
+            .then((response) =>{
+                // console.log(response);
+                return response.json();
+            })
+
+            .then((data)=>{
+                console.log(data);
+            })
+    }
+}
+
+
 
 // 課題2: fetchMultipleQuizDataメソッドを実行してAPIの結果に含まれるresultsプロパティの値をconsole.logで出力する
-
+const quizMultiple = new QuizFetcher();
+// quizMultiple.fetchMultipleQuizData();
 
 // 課題3: fetchTrueOrFalseQuizDataメソッドを実行してAPIの結果に含まれるresultsプロパティの値をconsole.logで出力する
+quizMultiple.fetchTrueOrFalseQuizData();
 
